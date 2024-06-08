@@ -18,9 +18,6 @@ import model.ProductBean;
 import model.ProductModel;
 
 @WebServlet("/ProductControl")
-/**
- * Servlet implementation class ProductControl
- */
 public class ProductControl extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -36,6 +33,9 @@ public class ProductControl extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Configurare Content Security Policy
+        response.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self';");
 
         try {
             if (request.getParameter("action") != null && request.getParameter("action").compareTo("dettaglio") == 0) {
